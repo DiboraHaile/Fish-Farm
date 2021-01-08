@@ -1,0 +1,147 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+h1{
+  padding-top: 20px;
+}
+.Pond {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    justify-content: space-between;
+    margin: 0 .5rem 3.3rem .5rem;
+    height: 15rem;
+    border-radius: 8px;
+    box-shadow: 7px 10px rgb(238, 236, 236);
+  }
+
+  .Pond-information {
+    font-family:  MonkeyactPersonaluse-8Me6Z;
+    justify-content: space-between;
+    padding: 15px;
+    
+    
+     
+  } 
+
+  .Pond h2 {
+    margin: .5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding-top: 10px;
+  }
+
+  .arrow {
+    pointer-events: none;
+    margin-left: 128px;
+    height: 4vmin;
+    width: 5vmin;
+  }
+  
+  
+  .Pond-sensor-readings h2{
+    display: inline;
+    color: #e09f11;
+    font-weight: 920;
+    font-size: 1.5rem;
+  } 
+
+
+  
+  .Pond-information p {
+    display: inline;
+    font-size: .88rem;
+    font-weight: 300;
+    line-height: 1rem;
+    text-align: left;
+    justify-content: space-between;
+    letter-spacing : 0.05rem;
+}
+.sensor-info{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+ 
+}
+  .temp,.ultra,.ph{
+    padding : 10rem;
+    margin: 1.3rem;
+   }
+   .temp{
+     color:rgb(184, 66, 19);
+   }
+   .ultra{
+     color:royalblue
+   }
+   .ph{
+     color:chartreuse;
+   }
+  .Pond-sensor-readings p{
+    font-size: 1rem;
+    padding : 0.2rem;
+    letter-spacing: 1;
+  }
+    
+  .Pond-actuator-history{
+    
+  }
+  .Pond-actuator-history p{
+    display: block;
+    margin-top: 10px;
+    margin-bottom:0;
+    padding-left: 0.2rem;
+    padding-bottom: 0vmin;
+    color: teal;
+    font-weight: 600;
+  }
+  
+  .temp_img{
+    display: inline;
+    height: 4vmin;
+    
+  }
+  .ultra_img{
+    display: inline;
+    height: 4vmin;
+    
+  }
+  .ph_img{
+    display: inline;
+    height: 4vmin;
+  
+  }
+  .Pond-actuator-history{
+    margin-bottom: 0.7rem;
+    margin-left: 0.9rem;
+  }
+
+  #data_updated_at {
+   
+    font-size: .9rem;
+    font-weight: 200;
+    text-align: right;
+    padding-top: 0.2;
+   
+   
+   
+  }
+
+  .pond_healthy{
+    text-align: left;
+
+  }
+  .pond_healthy p{
+    padding-left: 0.2rem;
+  }
+  .tick{
+    
+    height: 4vmin;
+    width: 5vmin;
+    margin-top: 0.2rem;
+   
+  }
+
+ 
+  
+  

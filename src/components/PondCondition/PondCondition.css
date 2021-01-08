@@ -1,0 +1,28 @@
+.pondCondition{
+  padding-top: 0.5vmin;
+  margin-bottom: 10rem;
+  text-align: right;
+}
+.msg{
+    padding-top: 0vmin;
+    padding-right: 0;
+    margin-left: 0vmin;
+    padding-bottom: 2vmin;
+   
+}
+.image{
+  display: inline-block;
+  margin-top: 0rem;
+
+}
+.cross,.tick
+  {    
+    display: inline;
+    height: 4vmin;
+    width: 4vmin;
+   
+   
+   
+  }
+
+
