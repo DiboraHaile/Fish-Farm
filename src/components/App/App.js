@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
 import fish from "./fish.png";
+
 //import SearchBar from "../SearchBar/SearchBar";
 import PondList from "../PondList/PondList";
 import Pond from "../Pond/Pond"
-
+import Main from "../Main/Main"
+import Header from "../Header/Header"
 
 class App extends Component {
   constructor(props){
@@ -15,18 +17,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-   <div className="logo">
-  
-   <div className="title"><h1>Pond Monitoring</h1></div>
+    <div className="header"> <Header/></div>
+   <div className="main"><Pond/></div>
    
-   <div className= "tips"> <p> <a href= "/Tips">Tips</a></p></div>
   </div>
-  <Pond/>
-  <PondList ponds={ponds}/> 
   
-</div>
+
+  
+  
+
     );
-  }
+  
+}
 }
 //<SearchBar onClick={this.changeSortMethod}/>
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import './PondList.css';
 import PondCard from '../PondCard/PondCard';
+import Pond from '../Pond/Pond';
+import PondDetail from '../PondDetail/PondDetail';
 
 class PondList extends React.Component
  {
@@ -14,6 +16,7 @@ class PondList extends React.Component
             return (<PondCard pond={pond}/>);
           })
         }
+        
         </div>
       );
    }

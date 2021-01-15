@@ -8,7 +8,7 @@ let pondCondMsg = "";
 let pondOk = 0;
 class PondCondition extends React.Component{
     render(){
-        if ((!this.props.pondPH)  && (!this.props.pondUltr) && (!this.props.pondTemp))
+        if ((parseInt(this.props.pondPH) > 6.5 && parseInt(this.props.pondPH)<9)  && (parseInt(this.props.pondUltr) > 10) && (parseInt(this.props.pondTemp) < 85 && parseInt(this.props.pondTemp) > 60))
             {
                 pondOk = 1;
                 pondCondMsg = pond_msg[0];

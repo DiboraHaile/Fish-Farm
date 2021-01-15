@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import arrow from './arrow1.png';
 import ultra from './ultra.svg';
 import ph from './ph.svg';
@@ -18,14 +19,14 @@ class PondCard extends React.Component{
   
   <div className="Pond-information">
     <div className="Pond-sensor-readings">
-    <div className="arrow">
-    <a href={arrow}><img src={arrow} className="arrow" alt="home"></img></a>
+    <div className="div-arrow">
+    <Link to = '/details'><img src={arrow} className="arrow" alt="home"></img></Link>
     </div>
-      <h2>{this.props.pond.name}</h2>
+      <h2>Pond {this.props.pond.pond_number}</h2>
       <div className="sensor-info">
-      <p className="temp"> <img src={temp} className="temp_img" alt="home"></img>{this.props.pond.temprature}c</p>
-      <p className="ultra"> <img src={ultra} className="ultra_img" alt="home"></img>{this.props.pond.ultrasonic}m</p>
-      <p className="ph"> <img src={ph} className="ph_img" alt="home"></img>{this.props.pond.ph}</p>
+      <p className="temp"> <img src={temp} className="temp_img" alt="home"></img>{this.props.pond.Temp}c</p>
+      <p className="ultra"> <img src={ultra} className="ultra_img" alt="home"></img>{this.props.pond.Water_Level}m</p>
+      <p className="ph"> <img src={ph} className="ph_img" alt="home"></img>{this.props.pond.PH}</p>
       </div>
     </div>
     <div className="Pond-actuator-history">
