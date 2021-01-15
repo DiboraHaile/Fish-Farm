@@ -17,9 +17,11 @@ class PondDetail extends React.Component{
                 
             <div className="grid">
                <div className="box sensor-reading">
-
+               <p className= "ph">{this.props.pond.PH}</p>
                </div>
-               <div className="box graph"></div>
+               <div className="box graph">
+                   
+               </div>
                <div className="box condition"></div>
                <div className="box D"></div>
                <div className="box E"></div>
@@ -43,11 +45,7 @@ class PondDetail extends React.Component{
                <div className="box T"></div>
                <div className="box R"></div>
                <div className="box S"></div>
-              
-        
-      
-    
-  
+               
 
 </div>
 </div>

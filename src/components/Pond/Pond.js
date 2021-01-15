@@ -30,18 +30,18 @@ class Pond extends Component {
         let parsedJSON = await JSON.parse(responseText);
         this.setState({data:parsedJSON.datas});
         this.setState({responseParsed:true});
-        
+        alert(this.state.data[0].PH)
     }
     
     render(){
         const { data, responseParsed} = this.state;
-        console.log(data);
         return (
             <div className = 'main'>
+                
                  <Switch>
                 <Route exact path='/' render={() => (responseParsed ? (<PondList ponds = {data} isAuthed={true} />): <p> Loading</p> )} />
                 <Route path='/Tips' component={Tips}/>
-                <Route path='/details' render = {() => <PondDetail ponds={data}/>}/>
+                <Route path='/details/Pond:ID' render = {(props) => responseParsed ? (<PondDetail pond={data[parseInt(props.match.params.ID)-1]} isAuthed={true}/>):<p> Loading</p>}/>
                 </Switch>             
             </div>
         )

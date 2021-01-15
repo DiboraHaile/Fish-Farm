@@ -20,7 +20,7 @@ class PondCard extends React.Component{
   <div className="Pond-information">
     <div className="Pond-sensor-readings">
     <div className="div-arrow">
-    <Link to = '/details'><img src={arrow} className="arrow" alt="home"></img></Link>
+    <Link to = {'/details/Pond'+this.props.pond.pond_number}><img src={arrow} className="arrow" alt="home"></img></Link>
     </div>
       <h2>Pond {this.props.pond.pond_number}</h2>
       <div className="sensor-info">
