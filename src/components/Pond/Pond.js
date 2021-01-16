@@ -4,6 +4,7 @@ import './Pond.css';
 import PondList from '../PondList/PondList';
 import Tips from '../Tips/Tips'
 import PondDetail from '../PondDetail/PondDetail';
+import PondDetailCard from '../PondDetailCard/PondDetailCard'
 
 let PondNumb = 1;
 let pond={
@@ -24,13 +25,16 @@ class Pond extends Component {
       };
     }
     componentDidMount = async() => {
-        // 
+        
         let response = await fetch('http://127.0.0.1:5000/');
         let responseText = await response.text();
         let parsedJSON = await JSON.parse(responseText);
         this.setState({data:parsedJSON.datas});
         this.setState({responseParsed:true});
-        alert(this.state.data[0].PH)
+        // var today = new Date();
+        // var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        // var time = today.getHours()+":"+today.getMinutes()+":"+today.getSeconds();
+        
     }
     
     render(){
@@ -41,7 +45,7 @@ class Pond extends Component {
                  <Switch>
                 <Route exact path='/' render={() => (responseParsed ? (<PondList ponds = {data} isAuthed={true} />): <p> Loading</p> )} />
                 <Route path='/Tips' component={Tips}/>
-                <Route path='/details/Pond:ID' render = {(props) => responseParsed ? (<PondDetail pond={data[parseInt(props.match.params.ID)-1]} isAuthed={true}/>):<p> Loading</p>}/>
+                <Route path='/details-Pond:ID' render = {(props) => responseParsed ? (<PondDetailCard pond={data[parseInt(props.match.params.ID)-1]} isAuthed={true}/>):<p> Loading</p>}/>
                 </Switch>             
             </div>
         )

@@ -1,0 +1,9 @@
+.card-d{
+    opacity: 1;
+    background-color: white;
+    margin: 3rem 3.3rem .5rem;
+    height: 80rem;
+    border-radius: 5px;
+    z-index: 20;
+  
+}

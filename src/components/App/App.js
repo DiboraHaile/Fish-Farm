@@ -12,13 +12,19 @@ import Header from "../Header/Header"
 class App extends Component {
   constructor(props){
     super(props);
+    this.state = {proop : ""};
    }
-
+  //  componentDidMount=() =>{
+  //   let x = document.getElementsByClassName("App").style.opacity;
+  //   x =0.2;
+  //   this.setState({proop: x});
+  //  }
   render() {
+    
     return (
       <div className="App">
     <div className="header"> <Header/></div>
-   <div className="main"><Pond/></div>
+   <div className="main"> <Pond/></div>
    
   </div>
   

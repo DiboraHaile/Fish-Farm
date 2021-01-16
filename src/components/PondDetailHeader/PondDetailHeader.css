@@ -1,0 +1,18 @@
+.header-d{
+    display: flex;
+    margin-left: 7rem;
+    
+    /* background-color: tomato; */
+}
+.header-d h1{
+    text-align: center;
+    color:#e09f11;
+    padding-top: 2rem;
+    
+}
+.link-d {
+    text-align: right;
+    padding-top: 10vmin;
+    padding-left: 70%;
+    /* background-color: purple; */
+}

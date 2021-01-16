@@ -1,3 +1,6 @@
+*{
+  
+}
 .logo{
     margin-left: 0;
     background-color: teal;
@@ -14,6 +17,9 @@
     padding-left: 50rem;
     background-color: cornflowerblue;
    
+  }
+  p{
+    z-index: 0;
   }
   .img{
     

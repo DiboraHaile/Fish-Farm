@@ -1,0 +1,13 @@
+
+.display-d{
+    opacity: 1;
+    background-color: white;
+    justify-content: space-between;
+    margin: 3rem 3.3rem .5rem;
+    height: 50rem;
+    border-radius: 8px;
+    float: right;
+    color: black;
+    border-radius: 5px;
+    z-index: 20;
+}

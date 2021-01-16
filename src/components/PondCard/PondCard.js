@@ -8,10 +8,19 @@ import './PondCard.css';
 import PondCondition from '../PondCondition/PondCondition'
 
 
+
 class PondCard extends React.Component{
     constructor(props){
       super(props);
+      // this.dim_bg = this.bind.dim_bg(this);
     }
+    // dim_bg (){
+    //   alert('444');
+    //   let x = ;
+    //   x.style.opacity = "0.2";
+      
+    // }
+
     render(){
         return(
             <div class="Pond">
@@ -20,7 +29,7 @@ class PondCard extends React.Component{
   <div className="Pond-information">
     <div className="Pond-sensor-readings">
     <div className="div-arrow">
-    <Link to = {'/details/Pond'+this.props.pond.pond_number}><img src={arrow} className="arrow" alt="home"></img></Link>
+    <Link to = {'/details-Pond'+this.props.pond.pond_number}><img src={arrow} className="arrow" alt="home" ></img></Link>
     </div>
       <h2>Pond {this.props.pond.pond_number}</h2>
       <div className="sensor-info">
@@ -30,13 +39,13 @@ class PondCard extends React.Component{
       </div>
     </div>
     <div className="Pond-actuator-history">
-      <p> Updated at: {this.props.pond.time}</p>
+      <p> Updated at: {this.props.pond.Time_recorded}</p>
     </div>
     <hr></hr>
     <div className="pond_healthy">
   
   
-    <PondCondition pondPH= {this.props.pond.ph} pondUltr = {this.props.pond.ultrasonic} pondTemp = {this.props.temprature}/>
+    <PondCondition pondPH= {this.props.pond.PH} pondUltr = {this.props.pond.Water_Level} pondTemp = {this.props.pond.Temp}/>
 
     
     

@@ -1,0 +1,44 @@
+.pondCondition-a {
+    text-align: center;
+    height: auto;
+
+    padding: 1vmin;
+}
+.msg-a{
+    /* background-color: yellow; */
+    margin-top: 2rem;
+    display: flex;
+}
+.msg-a h2{
+   
+    color: rgb(184, 35, 35);
+    text-align: left;
+    display: inline;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    padding-bottom: 1rem;
+    
+    
+}
+.image-a{
+    margin-right: 2.5rem;
+    /* background-color: tomato; */
+}
+.pondCondition-a p{
+ padding : .5rem;
+}
+.button {
+        background-color: teal; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        width: 100%;
+      }
+.button:hover{
+    background-color: rgb(23, 97, 146); /* Green */
+    color: white;
+}
