@@ -7,28 +7,50 @@ class PondHistory extends React.Component{
       super(props);
     }
     render(){
+      let data_rows = [];
+      let row = [];
+      for (let i = 0;i<(this.props.spec_data.PH).length;i++){
+        row.push(i+1);
+        row.push(this.props.spec_data.PH[i]);
+        row.push(this.props.spec_data.Water_Level[i]);
+        row.push(this.props.spec_data.Temprature[i]);
+        row.push(this.props.spec_data.Time_recorded[i]);
+        data_rows.push(row);
+        row = [];
+      }
+
       
     return (  
-          <div>  
+      <div className="pondHistory">
+      <h3> Pond Sensor Reading History</h3>
+          <div className="pond_table" >  
               <table border = "1">
          <thead>
             <td>ID</td>
-            <td>Temprature</td>
-            <td>Water_Level</td>
             <td>PH</td>
+            <td>Water Level</td>
+            <td>Temprature</td>
+            <td>Time_recorded</td>
+            
+            
          </thead>
-
-         {/* {% for row in rows %} */}
-            {/* <tr>
-
-               <td>{{row["name"]}}</td>
-               <td>{{row["addr"]}}</td>
-               <td> {{ row["city"]}}</td>
-               <td>{{row['pin']}}</td>
-            </tr> */}
-        {/* //  {% endfor %} */}
+         
+         {
+          
+          data_rows.map(row => {
+            return (
+              <tr>
+              {row.map(value => {
+              return ( <td> {value} </td> )
+           }) }   
+           </tr>       
+           )
+          }) 
+              
+         }     
       </table>
-          </div>        
+          </div>   
+          </div>     
     )  
   }  
 }  

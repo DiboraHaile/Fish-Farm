@@ -6,89 +6,69 @@ import temp from '../PondCard/temp.png';
 import './LineChart.css';
 import PondActuator from '../PondActuator/PondActuator';
 import PondCondition from '../PondCondition/PondCondition';
-import { Charts, ChartContainer, ChartRow, YAxis, LineChart } from "react-timeseries-charts";
-import { TimeSeries, TimeRange } from "pondjs";
+// import { TimeSeries, TimeRange } from "pondjs";
+import Chart from "react-apexcharts";
 
 class LineChart extends React.Component {
     constructor(props) {
       super(props);
-
+      let ph = this.props.data.PH;
+      let temp = this.props.data.Temprature;
+      let wl = this.props.data.Water_Level;
+      let time = this.props.data.Time_recorded;
       this.state = {
-      
-        series: [{
-          data: data.slice()
-        }],
         options: {
           chart: {
-            id: 'realtime',
-            height: 350,
-            type: 'line',
-            animations: {
-              enabled: true,
-              easing: 'linear',
-              dynamicAnimation: {
-                speed: 1000
-              }
-            },
-            toolbar: {
-              show: false
-            },
-            zoom: {
-              enabled: false
-            }
-          },
-          dataLabels: {
-            enabled: false
-          },
-          stroke: {
-            curve: 'smooth'
-          },
-          title: {
-            text: 'Dynamic Updating Chart',
-            align: 'left'
-          },
-          markers: {
-            size: 0
+            id: "basic-bar"
           },
           xaxis: {
-            type: 'datetime',
-            range: XAXISRANGE,
-          },
-          yaxis: {
-            max: 100
-          },
-          legend: {
-            show: false
-          },
+            categories: time
+          }
         },
-      
-      
+        series: [
+          {
+            name: "PH",
+            data: ph
+          },
+          {
+            name: "Temprature",
+            data: temp
+          },
+          {
+            name: "Water Level",
+            data: wl
+          },
+
+        ]
       };
     }
-
   
-    componentDidMount() {
-      window.setInterval(() => {
-        getNewSeries(lastDate, {
-          min: 10,
-          max: 90
-        })
-        
-        ApexCharts.exec('realtime', 'updateSeries', [{
-          data: data
-        }])
-      }, 1000)
-    }
+    // componentDidMount() {
+    //   this.setState({categories : {}})
+    // }
   
 
     render() {
       return (
         
-
-  <div id="chart">
-<ReactApexChart options={this.state.options} series={this.state.series} type="line" height={350} />
-</div>
-
+        <div className="pond_chart">
+          <h3> Pond Sensor Reading Graph</h3>
+          <div className="contain">
+          
+        <div className="app">
+        <div className="row">
+          <div className="mixed-chart">
+            <Chart
+              options={this.state.options}
+              series={this.state.series}
+              type="line"
+              width="500"
+            />
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
 
       );
     }

@@ -5,6 +5,8 @@ import PondList from '../PondList/PondList';
 import Tips from '../Tips/Tips'
 import PondDetail from '../PondDetail/PondDetail';
 import PondDetailCard from '../PondDetailCard/PondDetailCard'
+// import { io } from 'socket.io-client';
+// var EventEmitter =require('events').EventEmitter;
 
 let PondNumb = 1;
 let pond={
@@ -25,7 +27,13 @@ class Pond extends Component {
       };
     }
     componentDidMount = async() => {
-        
+        // let emitter = new EventEmitter();
+        // const socket = io('http://127.0.0.1:5000/');
+        // // emitter.on('')
+        // socket.on('connect', (data) => {
+        //     console.log('a user connected');
+            
+        //   });
         let response = await fetch('http://127.0.0.1:5000/');
         let responseText = await response.text();
         let parsedJSON = await JSON.parse(responseText);

@@ -39,7 +39,7 @@ class PondCard extends React.Component{
       </div>
     </div>
     <div className="Pond-actuator-history">
-      <p> Updated at: {this.props.pond.Time_recorded}</p>
+      <p> Updated at: {this.props.pond.time}</p>
     </div>
     <hr></hr>
     <div className="pond_healthy">

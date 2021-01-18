@@ -1,8 +1,8 @@
 .card-d{
-    opacity: 1;
-    background-color: white;
+    
+    /* background-color:yellow; */
     margin: 3rem 3.3rem .5rem;
-    height: 80rem;
+    height: 60rem;
     border-radius: 5px;
     z-index: 20;
   

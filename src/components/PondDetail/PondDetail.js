@@ -1,23 +1,23 @@
 import React from 'react';
-import { Switch, Route,Link } from 'react-router-dom'
-import arrow from '../PondCard/arrow1.png';
 import ultra from '../PondCard/ultra.svg';
 import ph from '../PondCard/ph.svg';
 import temp from '../PondCard/temp.png';
 import './PondDetail.css';
 import PondActuator from '../PondActuator/PondActuator';
-import PondCondition from '../PondCondition/PondCondition';
-import Pond from '../Pond/Pond'
-import PondHistory from '../PondHistory/PondHistory'
-import { Charts, ChartContainer, ChartRow, YAxis, LineChart } from "react-timeseries-charts";
-import { TimeSeries, TimeRange } from "pondjs";
+// import { Charts, ChartContainer, ChartRow, YAxis, LineChart } from "react-timeseries-charts";
+import LineChart from '../LineChart/LineChart'
+// import { TimeSeries, TimeRange } from "pondjs";
 import PondDetailHeader from '../PondDetailHeader/PondDetailHeader';
+
 
 class PondDetail extends React.Component{
     constructor(props){
       super(props);
-     
+      this.state = {
+          pond : this.props.pond
+      }
     }
+    
     render(){
        
         // alert(pond_num);
@@ -27,9 +27,9 @@ class PondDetail extends React.Component{
                     <div className="box sensor-reading-d">
                     <h3> Sensor Readings </h3>
                     <div className="sensor-info-d">
-                    <p className="temp-d"> Temp <img src={temp} className="temp_img-d" alt="home"></img>{this.props.pond.Temp}c</p>
-                    <p className="ultra-d"> Water Level <img src={ultra} className="ultra_img-d" alt="home"></img>{this.props.pond.Water_Level}m</p>
-                    <p className="ph-d"> PH <img src={ph} className="ph_img-d" alt="home"></img>{this.props.pond.PH}</p>
+                    <p className="temp-d"> Temp <img src={temp} className="temp_img-d" alt="home"></img>{this.state.pond.Temp}c</p>
+                    <p className="ultra-d"> Water Level <img src={ultra} className="ultra_img-d" alt="home"></img>{this.state.pond.Water_Level}m</p>
+                    <p className="ph-d"> PH <img src={ph} className="ph_img-d" alt="home"></img>{this.state.pond.PH}</p>
                     </div>
                     <div className="Pond-actuator-history-d">
                         <p> Last time Updated at: {this.props.pond.Time_recorded}</p>
@@ -37,12 +37,13 @@ class PondDetail extends React.Component{
                </div>
                
                <div className="box graph">
-                
+                   
+                <LineChart data = {this.props.spec_data}/>
                </div> 
 
 
                <div className="box condition-d">
-               <PondActuator pondPH= {this.props.pond.PH} pondUltr = {this.props.pond.Water_Level} pondTemp = {this.props.pond.Temp}/>
+               <PondActuator pondPH= {this.state.pond.PH} pondUltr = {this.state.pond.Water_Level} pondTemp = {this.state.pond.Temp}/>
 
                </div>
 

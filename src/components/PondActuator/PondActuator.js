@@ -47,11 +47,11 @@ class PondActuator extends React.Component{
     render(){
         let pond_msg = ["Danger","Healthy"];
         // let pond_msg_color = ["red", "green"];
-        // (pond_msg_color[parseInt(this.state.pondok)])
+        // alert(this.state.pondok);
         return(
 
     <div className= "pondCondition-a">
-        <div className="msg-a"> <h2> The Pond is {!(this.state.pondOk) && <text>in</text>} {pond_msg[parseInt(this.state.pondok)]}</h2> 
+        <div className="msg-a"> <h2 color="red"> The Pond is {!(parseInt(this.state.pondOk)) ? (<text>in Danger</text>) : (<text>Healthy</text>)}</h2> 
         <div className="image-a">
         {!(parseInt(this.state.pondOk)) ?(<img src={cross} className="cross" alt="cross"></img>):(<img src={tick} className="tick" alt="tick"></img>) }</div>
         </div>

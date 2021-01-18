@@ -1,0 +1,34 @@
+.pondHistory{
+    padding-top: 4rem;
+    background-color:rgb(240, 239, 239);
+    width: auto;
+    height: 600px;
+    z-index: 5;
+    text-align: center;
+    overflow-x:auto;
+
+}
+.pond_table{
+    display: grid;
+    
+    margin-top : 0rem;
+}
+table {
+    border-collapse: collapse;
+    margin : 5rem;
+    padding: 10rem;
+    text-align: center;
+  }
+  
+  th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  th {
+    background-color: rgb(135, 252, 252);
+    color: white;
+  }
+  tr:hover {background-color:  rgb(235, 247, 247);}
+
+  
