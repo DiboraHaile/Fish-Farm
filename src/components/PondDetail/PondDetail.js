@@ -13,9 +13,6 @@ import PondDetailHeader from '../PondDetailHeader/PondDetailHeader';
 class PondDetail extends React.Component{
     constructor(props){
       super(props);
-      this.state = {
-          pond : this.props.pond
-      }
     }
     
     render(){
@@ -27,9 +24,9 @@ class PondDetail extends React.Component{
                     <div className="box sensor-reading-d">
                     <h3> Sensor Readings </h3>
                     <div className="sensor-info-d">
-                    <p className="temp-d"> Temp <img src={temp} className="temp_img-d" alt="home"></img>{this.state.pond.Temp}c</p>
-                    <p className="ultra-d"> Water Level <img src={ultra} className="ultra_img-d" alt="home"></img>{this.state.pond.Water_Level}m</p>
-                    <p className="ph-d"> PH <img src={ph} className="ph_img-d" alt="home"></img>{this.state.pond.PH}</p>
+                    <p className="temp-d"> Temp <img src={temp} className="temp_img-d" alt="home"></img>{this.props.pond.Temp}c</p>
+                    <p className="ultra-d"> Water Level <img src={ultra} className="ultra_img-d" alt="home"></img>{this.props.pond.Water_Level}m</p>
+                    <p className="ph-d"> PH <img src={ph} className="ph_img-d" alt="home"></img>{this.props.pond.PH}</p>
                     </div>
                     <div className="Pond-actuator-history-d">
                         <p> Last time Updated at: {this.props.pond.Time_recorded}</p>
@@ -43,7 +40,7 @@ class PondDetail extends React.Component{
 
 
                <div className="box condition-d">
-               <PondActuator pondPH= {this.state.pond.PH} pondUltr = {this.state.pond.Water_Level} pondTemp = {this.state.pond.Temp}/>
+               <PondActuator pondPH= {this.props.pond.PH} pondUltr = {this.props.pond.Water_Level} pondTemp = {this.props.pond.Temp}/>
 
                </div>
 

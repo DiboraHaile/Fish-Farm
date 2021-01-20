@@ -12,7 +12,7 @@ import Header from "../Header/Header"
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = {proop : ""};
+    // this.state = {proop : ""};
    }
   //  componentDidMount=() =>{
   //   let x = document.getElementsByClassName("App").style.opacity;

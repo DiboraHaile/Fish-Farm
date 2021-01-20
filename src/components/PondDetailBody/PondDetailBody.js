@@ -6,7 +6,10 @@ import { Charts, ChartContainer, ChartRow, YAxis, LineChart } from "react-timese
 import { TimeSeries, TimeRange } from "pondjs";
 import PondDetailHeader from '../PondDetailHeader/PondDetailHeader';
 import PondDetail from '../PondDetail/PondDetail'
-import './PondDetailBody.css'
+import './PondDetailBody.css';
+import socketIOClient from "socket.io-client";
+import Pond from "../Pond/Pond";
+import socket from '../SocketContext';
 
 class PondDetailBody extends React.Component{
     constructor(props){
@@ -17,23 +20,20 @@ class PondDetailBody extends React.Component{
       responseParsed: false};
       
     }
-    componentDidMount = async() => {
-        let url = 'http://127.0.0.1:5000/details-Pond?x='+this.state.pond_num;
-        let response = await fetch(url); 
-        let responseText = await response.text();
-        let parsedJSON = await JSON.parse(responseText);
-        this.setState({data:parsedJSON});
-        this.setState({responseParsed:true});
-        
-        
-    }
+    componentDidMount = async() => {     
+      socket.emit('arrowclicked', this.state.pond_num);
+      socket.on('specdata', (fromsocket) => {
+      this.setState({data: fromsocket});
+      this.setState({responseParsed: true});
+      });
+      }
+    
 render(){
     return(
         <div className= "display-d">
 <Switch>
 <Route exact path={'/details-Pond'+this.state.pond_num} render = {()=> this.state.responseParsed ? (<PondDetail pond={this.props.pond} spec_data={this.state.data} isAuthed={true}/>) : <p> Loading </p> }/>
-<Route path={'/details-Pond'+this.state.pond_num+'/History'} render = {()=> this.state.responseParsed ? (<PondHistory pond={this.props.pond} spec_data={this.state.data} isAuthed={true}/>)  : <p> Loading </p>}/>
-{/* <Route path='/details/Pond:ID' render = {(props) => responseParsed ? (<PondDetail pond={data[parseInt(props.match.params.ID)-1]} isAuthed={true}/>):<p> Loading</p>}/> */}
+<Route path={'/details-Pond'+this.state.pond_num+'/History'} render = {()=> this.state.responseParsed ? (<PondHistory spec_data={this.state.data} isAuthed={true}/>)  : <p> Loading </p>}/>
 </Switch>  
 </div>
     );

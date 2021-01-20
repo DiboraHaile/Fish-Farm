@@ -23,6 +23,12 @@ class LineChart extends React.Component {
           },
           xaxis: {
             categories: time
+          },
+          stroke: {
+            width: 1.5
+          },
+          grid : {
+            size : 200
           }
         },
         series: [

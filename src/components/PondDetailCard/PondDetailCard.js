@@ -10,7 +10,10 @@ import PondDetailBody from '../PondDetailBody/PondDetailBody'
 class PondDetailCard extends React.Component{
     constructor(props){
       super(props);
-      this.state = {pond_num:this.props.pond.pond_number};
+      this.state = {pond_num:this.props.pond.pond_number,
+                    
+      };
+      
     }
     render(){
         return(
