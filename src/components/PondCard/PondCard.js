@@ -31,7 +31,7 @@ class PondCard extends React.Component{
     <div className="div-arrow">
     <Link to = {'/details-Pond'+this.props.pond.pond_number}><img src={arrow} className="arrow" alt="home" ></img></Link>
     </div>
-      <h2>Pond {this.props.pond.pond_number}</h2>
+      <h2>POND {this.props.pond.pond_number}</h2>
       <div className="sensor-info">
       <p className="temp"> <img src={temp} className="temp_img" alt="home"></img>{this.props.pond.Temp}c</p>
       <p className="ultra"> <img src={ultra} className="ultra_img" alt="home"></img>{this.props.pond.Water_Level}m</p>
@@ -39,9 +39,10 @@ class PondCard extends React.Component{
       </div>
     </div>
     <div className="Pond-actuator-history">
-      <p> Updated at: {this.props.pond.time}</p>
+      {/* <p> Updated at: {this.props.pond.time}</p> */}
     </div>
     <hr></hr>
+    
     <div className="pond_healthy">
   
   

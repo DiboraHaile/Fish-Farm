@@ -18,7 +18,7 @@ class Header extends React.Component{
             <div className = 'main'>
               <div className="logo">
   
-  <div className="title"><h1>Pond Monitoring</h1></div>
+  <div className="title"><h2>Pond Monitoring</h2></div>
   
   <div className= "tips"> <p> <Link to= "/Tips">Tips</Link> <Link to= "/">Home</Link></p></div>
   

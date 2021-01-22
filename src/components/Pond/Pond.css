@@ -1,4 +1,5 @@
-*{
-    /* background-color: sandybrown; */
-    /* z-index: -20; */
+body{
+    background-color: rgba(184, 182, 182, 0.103);
+    
+    z-index: -20;
 }

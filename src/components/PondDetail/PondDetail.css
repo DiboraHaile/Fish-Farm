@@ -6,7 +6,7 @@
     width: auto;
     height: 600px;
     grid-template: 2fr 1fr 0.5fr 1fr 2fr 0.8fr/ 0.5fr 1fr 9fr 1fr 1fr 1fr 10fr ;
-    
+    background-color: rgb(238, 236, 236);
     
 }
 .sensor-reading-d{
@@ -14,7 +14,7 @@
     grid-column-end:3;
     grid-row-start:1;
     grid-row-end:2;
-    background-color: rgb(240, 239, 239);
+    background-color: rgb(238, 236, 236);
     /* box-shadow: 7px 10px rgb(238, 236, 236); */
     
 }
@@ -23,7 +23,7 @@
     grid-column-end:7;
     grid-row-start:1;
     grid-row-end:7;
-    background-color: rgb(240, 239, 239);
+    background-color: rgba(252, 252, 252, 0);
     /* box-shadow: 7px 10px rgb(238, 236, 236); */
 }
 .condition-d{
@@ -31,7 +31,7 @@
     grid-column-end:5;
     grid-row-start:3;
     grid-row-end:7;
-    background-color: rgb(240, 239, 239);
+    background-color: rgba(252, 252, 252, 0);
     /* box-shadow: 7px 10px rgb(238, 236, 236); */
 }
 

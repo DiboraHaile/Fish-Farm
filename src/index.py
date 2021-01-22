@@ -25,21 +25,21 @@ def retrieveLatestData(number):
     conn = sqlite3.connect('fishfarm.db')
     conn.row_factory = sqlite3.Row
     cur = conn.cursor()
-    create_table(cur,'Pond_1')
-    create_table(cur,'Pond_2')
-    create_table(cur,'Pond_3')
-    create_table(cur,'Pond_4')
+    # create_table(cur,'Pond_1')
+    # create_table(cur,'Pond_2')
+    # create_table(cur,'Pond_3')
+    # create_table(cur,'Pond_4')
 
     rows1 = select_latest_data(cur,"Pond_1")
     rows2 = select_latest_data(cur,"Pond_2")
     rows3 = select_latest_data(cur,"Pond_3")
     rows4 = select_latest_data(cur,"Pond_4")
     
-    insert_data(number,number,number,"Pond_1",cur)
-    insert_data(number,number,number,"Pond_2",cur)
-    insert_data(number,number,number,"Pond_3",cur)
-    insert_data(number,number,number,"Pond_4",cur)
-    conn.commit()
+    # insert_data(number,number,number,"Pond_1",cur)
+    # insert_data(number,number,number,"Pond_2",cur)
+    # insert_data(number,number,number,"Pond_3",cur)
+    # insert_data(number,number,number,"Pond_4",cur)
+    # conn.commit()
 
     top_rows = {
         "datas" : [

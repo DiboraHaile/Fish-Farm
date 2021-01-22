@@ -31,7 +31,7 @@ componentDidMount = () => {
 
     <div className= "pondCondition">
         
-        <div className="msg"> {!(this.state.pondOk) && <text>In</text>} {pond_msg_c[parseInt(this.state.pondOk)]}
+        <div className="msg" color="gray"> {!(this.state.pondOk) && <text>In</text>} {pond_msg_c[parseInt(this.state.pondOk)]}
         <div className="image">
         {!(parseInt(this.state.pondOk)) ? (<img src={cross} className="cross" alt="cross"></img>):(<img src={tick} className="tick" alt="tick"></img>) }</div>
         </div>

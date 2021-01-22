@@ -4,46 +4,48 @@
 }
 
 h1{
-  padding-top: 20px;
+  padding-top: 12vmin;
 }
 .Pond {
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: rgba(252, 252, 252, 0);
     justify-content: space-between;
     margin: 0 .5rem 3.3rem .5rem;
-    height: 13rem;
+    height: 11rem;
     border-radius: 8px;
     box-shadow: 7px 10px rgb(238, 236, 236);
     padding: 0.4rem;
+    z-index: 1;
   }
  
   .Pond-information {
-    font-family:  MonkeyactPersonaluse-8Me6Z;
+    /* font-family:  MonkeyactPersonaluse-8Me6Z; */
     justify-content: space-between;
-    padding: 10px;
+    padding: 5px;
     } 
 
   .Pond h2 {
     margin: .5rem;
     font-size: 1.2rem;
     font-weight: 700;
-    padding-top: 10px;
+    padding-top: 2px;
   }
 
   .arrow {
     pointer-events: none;
-    margin-left: 170px;
+    margin-left: 220px;
     height: 4vmin;
     width: 5vmin;
   }
   
   .sensor-info{
-    margin-top: 2rem;
+    margin-top: 0.7rem;
+    /* background-color: green; */
   }
     .temp,.ultra,.ph{
       padding : 10rem;
-      margin: 1.3rem;
+      margin: .7rem;
      }
      .temp{
        color:rgb(184, 66, 19);
@@ -57,7 +59,7 @@ h1{
 
   .Pond-sensor-readings h2{
     display: inline;
-    color: #e09f11;
+    color: rgb(95, 94, 94);
     font-weight: 920;
     font-size: 1.5rem;
     
@@ -91,7 +93,7 @@ h1{
     margin-bottom:0;
     padding-left: 0.2rem;
     padding-bottom: 0vmin;
-    color: teal;
+    color: gray;
     font-weight: 600;
   }
   

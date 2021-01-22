@@ -6,7 +6,6 @@ import fish from "./fish.png";
 //import SearchBar from "../SearchBar/SearchBar";
 import PondList from "../PondList/PondList";
 import Pond from "../Pond/Pond"
-import Main from "../Main/Main"
 import Header from "../Header/Header"
 
 class App extends Component {
