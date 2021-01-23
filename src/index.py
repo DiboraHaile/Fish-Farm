@@ -150,7 +150,11 @@ def get_specific(data):
         socketio.emit('specdata', spec_data )       
         socketio.sleep(5)
 
-
+@cross_origin(supports_credentials=True)
+@socketio.on('switchtoggled')
+def toggle_value(checked,toggletype):
+    print(toggletype,checked)
+    
 
 
 @cross_origin(supports_credentials=True)
