@@ -21,42 +21,59 @@ thread2 = Thread()
 thread1_stop_event = Event()
 thread2_stop_event = Event()
 
+def create_table(cur,table_name):
+    sql = 'create table if not exists ' + table_name+ ' (ID INTEGER PRIMARY KEY AUTOINCREMENT,Temprature,PH,Water_Level,Time_recorded)'
+    cur.execute(sql)
+def insert_data(temp,ph,water_level,table_name,cur):
+    seconds = time.time()
+    localtime = time.ctime(seconds)
+    cur.execute("INSERT INTO "+ table_name + "(Temprature,PH,Water_Level,Time_recorded)values(?,?,?,?)",(temp,ph,water_level,localtime))
+def select_latest_data(cur,table_name):
+    cur.execute("select * from "+table_name + " where ID=(select MAX(ID) from " + table_name+")")
+    rows = cur.fetchall()
+    return rows
+
+def select_data(cur,table_name):
+
+    rows = cur.execute("select * from "+table_name)
+    # rows = cur.fetchall()
+    return rows
+def select_data_spec(cur,table_name,colmn):
+
+    cur.execute("select "+colmn +" from "+table_name)
+    rows = cur.fetchall()
+    return rows
+
 def retrieveLatestData(number):
     conn = sqlite3.connect('fishfarm.db')
     conn.row_factory = sqlite3.Row
     cur = conn.cursor()
-    # create_table(cur,'Pond_1')
-    # create_table(cur,'Pond_2')
-    # create_table(cur,'Pond_3')
-    # create_table(cur,'Pond_4')
+    tables = len(number["ph"])
+    print(tables)
+    
+    row = []
+    row_values = {}
+    for i in range(tables):
+        TableName = 'Pond_'+str(i+1)
+        create_table(cur,TableName)
+        insert_data(number['ph'][i],number['ultr'][i],number['temp'][i],TableName,cur)
+        row_values['pond_number'] = i+1
+        row_values['PH'] = select_latest_data(cur,"Pond_"+str(i+1))[0]["PH"]
+        row_values['Temp']= select_latest_data(cur,"Pond_"+str(i+1))[0]["Temprature"]
+        row_values['Water_Level']=select_latest_data(cur,"Pond_"+str(i+1))[0]["Water_Level"]
+        row.append(row_values)
+        row_values = {}
+    conn.commit()      
 
-    rows1 = select_latest_data(cur,"Pond_1")
-    rows2 = select_latest_data(cur,"Pond_2")
-    rows3 = select_latest_data(cur,"Pond_3")
-    rows4 = select_latest_data(cur,"Pond_4")
-    
-    # insert_data(number,number,number,"Pond_1",cur)
-    # insert_data(number,number,number,"Pond_2",cur)
-    # insert_data(number,number,number,"Pond_3",cur)
-    # insert_data(number,number,number,"Pond_4",cur)
-    # conn.commit()
+    top_rows = { "datas": row}
 
-    top_rows = {
-        "datas" : [
-    {"ID":rows1[0]["ID"],"pond_number":"1","Temp":rows1[0]["Temprature"],"PH":rows1[0]["PH"],"Water_Level":rows1[0]["Water_Level"],"Time_recorded":rows1[0]["Time_recorded"]},
-    {"ID":rows2[0]["ID"],"pond_number":"2","Temp":rows2[0]["Temprature"],"PH":rows2[0]["PH"],"Water_Level":rows2[0]["Water_Level"],"Time_recorded":rows2[0]["Time_recorded"]},
-    {"ID":rows3[0]["ID"],"pond_number":"3","Temp":rows3[0]["Temprature"],"PH":rows3[0]["PH"],"Water_Level":rows3[0]["Water_Level"],"Time_recorded":rows3[0]["Time_recorded"]},
-    {"ID":rows4[0]["ID"],"pond_number":"4","Temp":rows4[0]["Temprature"],"PH":rows4[0]["PH"],"Water_Level":rows4[0]["Water_Level"],"Time_recorded":rows4[0]["Time_recorded"]}
-    ]}
-    
-    
     return top_rows
 
 
 def retrievePondData(pondnum):
     conn = sqlite3.connect('fishfarm.db')
     columns = ["Temprature","PH","Water_Level","Time_recorded"]
-    tableName = "Pond_"+pondnum
+    tableName = "Pond_"+ str(pondnum)
     cur = conn.cursor()
     rowss = select_data(cur,tableName)
     top_rows = {}
@@ -85,8 +102,21 @@ def get_latest():
     #infinite loop of magical random numbers
     print("Making random numbers")
     while not thread1_stop_event.isSet():
-        number = round(random()*10, 3)
-        latest_data = retrieveLatestData(number)
+        rec = {}
+        ph = round(random()*10, 3)
+        temp = round(random()*10, 3)
+        ultr = round(random()*10, 3)
+
+        ph1 = round(random()*10, 3)
+        temp2 = round(random()*10, 3)
+        ultr3 = round(random()*10, 3)
+
+        rec = {
+            "ph" : [ph, ph1],
+            "temp" : [ temp, temp2],
+            "ultr" : [ultr, ultr3]
+        }
+        latest_data = retrieveLatestData(rec)
         socketio.emit('latestdata', latest_data )       
         socketio.sleep(5)
 
@@ -104,28 +134,6 @@ def get_specific(data):
         socketio.emit('specdata', spec_data )       
         socketio.sleep(5)
 
-def create_table(cur,table_name):
-    sql = 'create table if not exists ' + table_name+ ' (ID INTEGER PRIMARY KEY AUTOINCREMENT,Temprature,PH,Water_Level,Time_recorded)'
-    cur.execute(sql)
-def insert_data(temp,ph,water_level,table_name,cur):
-    seconds = time.time()
-    localtime = time.ctime(seconds)
-    cur.execute("INSERT INTO "+ table_name + "(Temprature,PH,Water_Level,Time_recorded)values(?,?,?,?)",(temp,ph,water_level,localtime))
-def select_latest_data(cur,table_name):
-    cur.execute("select * from "+table_name + " where ID=(select MAX(ID) from " + table_name+")")
-    rows = cur.fetchall()
-    return rows
-
-def select_data(cur,table_name):
-
-    rows = cur.execute("select * from "+table_name)
-    # rows = cur.fetchall()
-    return rows
-def select_data_spec(cur,table_name,colmn):
-
-    cur.execute("select "+colmn +" from "+table_name)
-    rows = cur.fetchall()
-    return rows
 
 
 
@@ -153,7 +161,7 @@ def create_thread2(pond_num):
     #Start the thread if it hasn't been started
     if not thread2.is_alive():
         print("Starting Thread2")
-        thread1 = socketio.start_background_task(get_specific(pond_num))
+        thread2 = socketio.start_background_task(get_specific(pond_num))
 
 @cross_origin(supports_credentials=True)
 @socketio.on('disconnect')

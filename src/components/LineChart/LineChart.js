@@ -16,18 +16,59 @@ class LineChart extends React.Component {
       let temp = this.props.data.Temprature;
       let wl = this.props.data.Water_Level;
       let time = this.props.data.Time_recorded;
+
+      
       this.state = {
         options: {
           chart: {
-            id: "basic-bar"
+            id: 'realtime',
+            height: 350,
+            type: 'line',
+            animations: {
+              enabled: true,
+              easing: 'linear',
+              dynamicAnimation: {
+                speed: 1000
+              }
+            },
+            toolbar: {
+              show: false
+            },
+            zoom: {
+              enabled: false
+            }
           },
+          dataLabels: {
+            enabled: false
+          },
+          stroke: {
+            curve: 'smooth'
+          },
+          title: {
+            text: 'Dynamic Updating Chart',
+            align: 'left'
+          },
+          markers: {
+            size: 0
+          },
+          xaxis: {
+            type: 'datetime',
+            range: 5,
+          },
+          yaxis: {
+            max: 100
+          },
+          legend: {
+            show: false
+          },
+        },
           xaxis: {
             categories: time
           },
           stroke: {
             width: 3
-          }
-        },
+          },
+        
         series: [
           {
             name: "PH",
@@ -61,12 +102,8 @@ class LineChart extends React.Component {
         <div className="app">
         <div className="row">
           <div className="mixed-chart">
-            <Chart
-              options={this.state.options}
-              series={this.state.series}
-              type="line"
-              width="500"
-            />
+            
+  <Chart options={this.state.options} series={this.state.series} type="line" height={350} />
           </div>
         </div>
       </div>
