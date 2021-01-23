@@ -2,6 +2,7 @@ import React from 'react';
 import tick from './tick.jpg';
 import cross from './cross.png';
 import './PondActuator.css';
+import socket from '../SocketContext'
 
 
 class PondActuator extends React.Component{
@@ -41,9 +42,10 @@ class PondActuator extends React.Component{
         }
         
     }
-    // RegulateCondition = () =>{
+    relay_swtch = () => {
 
-    // }
+    }
+    
     render(){
         let pond_msg = ["Danger","Healthy"];
         // let pond_msg_color = ["red", "green"];
@@ -57,8 +59,8 @@ class PondActuator extends React.Component{
         </div>
          <div className = 'regulate'>
         {parseInt(this.state.PH_d) ? (<div> <p> The PH value of the pond needs to be regulated!</p>  </div>) : (<div><p>The Ph value is optimum</p></div>)}
-        {parseInt(this.state.Temp_d) ? (<div> <p> The temprature value of the pond needs to be regulated!</p> <button type="submit" className="button"> Regulate Temprature</button> </div>) : (<div> <p>Temprature is optimum</p></div>)}
-        {parseInt(this.state.Water_Level_d) ? (<div> <p> The Water level of the pond needs to be regulated!</p> <button type="submit" className="button"> Regulate Water Level</button> </div>) : (<div><p>Water level is optimum</p></div>)}
+        {parseInt(this.state.Temp_d) ? (<div> <p> The temprature value of the pond needs to be regulated!</p> <button type="submit" className="button" onClick="relay_swtch"> Regulate Temprature</button> </div>) : (<div> <p>Temprature is optimum</p></div>)}
+        {parseInt(this.state.Water_Level_d) ? (<div> <p> The Water level of the pond needs to be regulated!</p> <button type="submit" className="button" onClick="relay_swtch"> Regulate Water Level</button> </div>) : (<div><p>Water level is optimum</p></div>)}
         </div>
         
     </div>

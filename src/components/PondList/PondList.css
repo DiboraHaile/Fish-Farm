@@ -2,5 +2,11 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    margin: 3.3rem 10%;
+    margin: 1.3rem;
+    margin-left: 0;
+    margin-right: 0vmin;
+    margin-bottom: 0.5vmin;
+    margin-top: 0.5vmin;
+    width: 100%;
+    /* background-color: blueviolet; */
 }

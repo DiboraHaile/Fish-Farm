@@ -20,6 +20,9 @@ thread1 = Thread()
 thread2 = Thread()
 thread1_stop_event = Event()
 thread2_stop_event = Event()
+data_inserted = False
+row_values = {}
+row = []
 
 def create_table(cur,table_name):
     sql = 'create table if not exists ' + table_name+ ' (ID INTEGER PRIMARY KEY AUTOINCREMENT,Temprature,PH,Water_Level,Time_recorded)'
@@ -50,19 +53,32 @@ def retrieveLatestData(number):
     cur = conn.cursor()
     tables = len(number["ph"])
     print(tables)
-    
-    row = []
+    global data_inserted
     row_values = {}
+    
+    print(data_inserted)
+    row = []
+    
     for i in range(tables):
         TableName = 'Pond_'+str(i+1)
         create_table(cur,TableName)
+        if data_inserted:
+            # print(row[-1]["PH"])
+            if (select_latest_data(cur,"Pond_"+str(i+1))[0]["PH"] == number['ph'][i] and select_latest_data(cur,"Pond_"+str(i+1))[0]["Temprature"] == number['temp'][i] and select_latest_data(cur,"Pond_"+str(i+1))[0]["Water_Level"] == number['ultr'][i]):
+                 continue
+            
+        else:
+            data_inserted = True
         insert_data(number['ph'][i],number['ultr'][i],number['temp'][i],TableName,cur)
         row_values['pond_number'] = i+1
         row_values['PH'] = select_latest_data(cur,"Pond_"+str(i+1))[0]["PH"]
         row_values['Temp']= select_latest_data(cur,"Pond_"+str(i+1))[0]["Temprature"]
         row_values['Water_Level']=select_latest_data(cur,"Pond_"+str(i+1))[0]["Water_Level"]
+        row_values['Time_recorded']=select_latest_data(cur,"Pond_"+str(i+1))[0]["Time_recorded"]
+        print('atleast once')
         row.append(row_values)
         row_values = {}
+        
     conn.commit()      
 
     top_rows = { "datas": row}
@@ -112,9 +128,9 @@ def get_latest():
         ultr3 = round(random()*10, 3)
 
         rec = {
-            "ph" : [ph, ph1],
-            "temp" : [ temp, temp2],
-            "ultr" : [ultr, ultr3]
+            "ph" : [ph,ph, ph1,ph1],
+            "temp" : [ temp,temp, temp2,temp2],
+            "ultr" : [ultr,ultr, ultr3,ultr]
         }
         latest_data = retrieveLatestData(rec)
         socketio.emit('latestdata', latest_data )       

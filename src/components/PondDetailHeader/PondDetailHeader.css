@@ -6,7 +6,7 @@
 }
 .header-d h1{
     text-align: center;
-    color:#e09f11;
+    color:rgb(95, 94, 94);;
     padding-top: 2rem;
     
 }
@@ -14,5 +14,6 @@
     text-align: right;
     padding-top: 10vmin;
     padding-left: 70%;
+    color: rgb(95, 94, 94);;
     /* background-color: purple; */
 }

@@ -7,6 +7,7 @@
     height: 600px;
     grid-template: 2fr 1fr 0.5fr 1fr 2fr 0.8fr/ 0.5fr 1fr 9fr 1fr 1fr 1fr 10fr ;
     background-color: rgb(238, 236, 236);
+    color: rgb(95, 94, 94);;
     
 }
 .sensor-reading-d{
@@ -113,6 +114,6 @@
         padding-top: 1vmin;
         padding-left: 0.2rem;
         padding-bottom: 2vmin;
-        color: teal;
+        color: black;
         font-weight: 600;
       }

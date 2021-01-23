@@ -11,7 +11,9 @@ h1{
     flex-direction: column;
     background-color: rgba(252, 252, 252, 0);
     justify-content: space-between;
-    margin: 0 .5rem 3.3rem .5rem;
+    /* margin: 0 0rem .3rem 0rem; */
+    margin-bottom: 1.5vmin;
+    margin-left: 0;
     height: 11rem;
     border-radius: 8px;
     box-shadow: 7px 10px rgb(238, 236, 236);
@@ -45,7 +47,7 @@ h1{
   }
     .temp,.ultra,.ph{
       padding : 10rem;
-      margin: .7rem;
+      margin: .5rem;
      }
      .temp{
        color:rgb(184, 66, 19);

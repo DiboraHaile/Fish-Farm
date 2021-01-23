@@ -9,7 +9,7 @@ class PondHistory extends React.Component{
     render(){
       let data_rows = [];
       let row = [];
-      for (let i = 0;i<(this.props.spec_data.PH).length;i++){
+      for (let i = 0;i<100;i++){
         row.push(i+1);
         row.push(this.props.spec_data.PH[i]);
         row.push(this.props.spec_data.Water_Level[i]);

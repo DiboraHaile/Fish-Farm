@@ -16,71 +16,31 @@ class LineChart extends React.Component {
       let temp = this.props.data.Temprature;
       let wl = this.props.data.Water_Level;
       let time = this.props.data.Time_recorded;
-
-      
       this.state = {
         options: {
           chart: {
-            id: 'realtime',
-            height: 350,
-            type: 'line',
-            animations: {
-              enabled: true,
-              easing: 'linear',
-              dynamicAnimation: {
-                speed: 1000
-              }
-            },
-            toolbar: {
-              show: false
-            },
-            zoom: {
-              enabled: false
-            }
+            id: "basic-bar"
           },
-          dataLabels: {
-            enabled: false
-          },
-          stroke: {
-            curve: 'smooth'
-          },
-          title: {
-            text: 'Dynamic Updating Chart',
-            align: 'left'
-          },
-          markers: {
-            size: 0
-          },
-          xaxis: {
-            type: 'datetime',
-            range: 5,
-          },
-          yaxis: {
-            max: 100
-          },
-          legend: {
-            show: false
-          },
-        },
           xaxis: {
             categories: time
           },
           stroke: {
             width: 3
           },
-        
+          color: [ 'rgb(95, 94, 94)','rgb(95, 94, 94)','rgb(95, 94, 94)']
+        },
         series: [
           {
             name: "PH",
-            data: ph
+            data: ph.slice(ph.length-5,ph.length)
           },
           {
             name: "Temprature",
-            data: temp
+            data: temp.slice(temp.length-5,temp.length)
           },
           {
             name: "Water Level",
-            data: wl
+            data: wl.slice(wl.length-5,wl.length)
           },
 
         ]
@@ -102,8 +62,12 @@ class LineChart extends React.Component {
         <div className="app">
         <div className="row">
           <div className="mixed-chart">
-            
-  <Chart options={this.state.options} series={this.state.series} type="line" height={350} />
+            <Chart
+              options={this.state.options}
+              series={this.state.series}
+              type="line"
+              width="500"
+            />
           </div>
         </div>
       </div>
